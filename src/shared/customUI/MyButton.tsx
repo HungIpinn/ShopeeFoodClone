@@ -1,6 +1,7 @@
 import { Pressable, StyleProp, StyleSheet, Text, TextStyle, ViewStyle } from "react-native";
 import { ReactNode } from "react";
 import { APP_COLOR } from '@/shared/config/ColorConstanst';
+import { responsiveFontSize, scale } from "@/shared/helpers/ScaleHelper";
 
 interface IProps{
     title?: string,
@@ -24,15 +25,15 @@ const MyButton = (props:IProps) => {
 const styles = StyleSheet.create({
     btnContainer: {
         backgroundColor: APP_COLOR.ORANGE, 
-        padding: 10, 
+        padding: scale(10), 
         borderRadius: 5, 
         alignItems: 'center', 
         //alignSelf:'flex-start',
         flexDirection:'row',
-        gap:10
+        gap:scale(10)
     },
     btnText:{
-        fontSize:18,
+        fontSize:responsiveFontSize(16),
     }
 })
 export default MyButton;
