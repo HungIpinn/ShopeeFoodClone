@@ -5,7 +5,8 @@
     "paths": {
       "@/*": ["src/*"],
       "react-native-vector-icons/*": ["./declarations.d.ts"]
-    }
+    },
+    "noUnusedLocals": false,
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["**/node_modules", "**/Pods"]

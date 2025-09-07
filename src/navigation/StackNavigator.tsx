@@ -1,17 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import DrawerNavigator from './DrawerNavigator';
-import DetailScreen from '../screens/DetailScreen';
-import WelcomeScreen from '../screens/WelcomeScreen';
-import SignUpScreen from '../screens/SignUpScreen';
-
-type RootStackParamList = {
-  Welcome: undefined;
-  SignUp: undefined;
-  Root: undefined;
-  Detail:undefined
-};
+import DrawerNavigator from '@/navigation/DrawerNavigator';
+import DetailScreen from '@/screens/DetailScreen';
+import WelcomeScreen from '@/screens/WelcomeScreen';
+import SignUpScreen from '@/screens/SignUpScreen';
+import { RootStackParamList } from '@/navigation/type';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
