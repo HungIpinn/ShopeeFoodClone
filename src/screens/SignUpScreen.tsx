@@ -26,7 +26,9 @@ const SignUpScreen = () => {
                 title='Đăng ký'
                 PressableTxtStyle={styles.txtResiger}
                 />
-                <SocailMeidaButton/>
+                <SocailMeidaButton
+                TextInLine='Đăng ký với'
+                />
             </View>
         </SafeAreaView>
     )
@@ -39,7 +41,8 @@ const styles = StyleSheet.create({
     },
     txtRegister:{
         fontSize:responsiveFontSize(24),
-        fontWeight:'bold'
+        fontWeight:'bold',
+        marginTop:scale(20)
     },
     btnRegister:{
         marginHorizontal:scale(40),

@@ -6,13 +6,18 @@ import MyButton from '@/shared/customUI/MyButton'
 import fb from '@/assets/auth/FB.png'
 import gg from '@/assets/auth/Gmail.png'
 
-const SocailMeidaButton = () => {
+interface IProps {
+   TextInLine?:string
+}
+
+const SocailMeidaButton = (props:IProps) => {
+    const {TextInLine} = props;
   return (
     <View>
         <TextBetweenLine  
         ContainerStyle={{paddingHorizontal:scale(50)}}
         TxtStyle={{fontSize:responsiveFontSize(16), fontWeight:'bold'}}
-        title="Đăng nhập với"
+        title={TextInLine}
         />
         <View>
             <View style={styles.containerRowBtn}>

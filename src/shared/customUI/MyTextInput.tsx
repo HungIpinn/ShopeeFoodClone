@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     text:{
         fontSize:responsiveFontSize(16),
         fontWeight:'medium',
-        marginBottom:scale(5),  
+        marginBottom:scale(5)
     },
     eye:{
         position:'absolute',
