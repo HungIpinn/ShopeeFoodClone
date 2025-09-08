@@ -5,8 +5,13 @@ import MyTextInput from '@/shared/customUI/MyTextInput';
 import { responsiveFontSize, scale } from '@/shared/helpers/ScaleHelper';
 import SocailMeidaButton from '@/shared/customUI/SocailMeidaButton';
 import MyButton from '@/shared/customUI/MyButton';
+import { useAppDispatch, useAppSelector } from '@/Redux/Hooks';
+import { loginUser } from '@/Redux/Slices/Auth/authThunk';
+import { logout } from '@/Redux/Slices/Auth/authSlice';
 
 const SignUpScreen = () => {
+    const dispatch = useAppDispatch();
+    const authData = useAppSelector((state) => state.auth);
     return (
         <SafeAreaView style={{flex:1}}>
             <View style={styles.container}>
@@ -25,6 +30,13 @@ const SignUpScreen = () => {
                 PressableStyle={styles.btnRegister}
                 title='Đăng ký'
                 PressableTxtStyle={styles.txtResiger}
+                onPress={() => dispatch(loginUser({ username: 'hung', password: '123' }))} 
+                />
+                <MyButton
+                PressableStyle={styles.btnRegister}
+                title='Đăng xuất'
+                PressableTxtStyle={styles.txtResiger}
+                onPress={() => dispatch(logout())}
                 />
                 <SocailMeidaButton
                 TextInLine='Đăng ký với'

@@ -7,13 +7,15 @@ interface IProps{
     title?: string,
     PressableStyle?: StyleProp<ViewStyle>,
     PressableTxtStyle?: StyleProp<TextStyle>,
-    icon?: ReactNode
+    icon?: ReactNode,
+    onPress?: () => void,  
 }
 
 const MyButton = (props:IProps) => {
-    const {title,PressableStyle,icon,PressableTxtStyle} = props;
+    const {title,PressableStyle,icon,PressableTxtStyle,onPress} = props;
     return (
         <Pressable 
+            onPress={onPress}
             style={({pressed})=>
                 [{opacity:pressed===true?0.5:1},
                 styles.btnContainer,PressableStyle]}>
