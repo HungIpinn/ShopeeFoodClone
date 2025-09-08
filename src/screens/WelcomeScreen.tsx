@@ -34,7 +34,9 @@ const WelcomeScreen = () => {
                         <Text style={styles.Line3Text}>Your favourite food delivery fast at your door</Text>
                     </View>
                     <View style={styles.containerBtn}>
-                        <SocailMeidaButton/>
+                        <SocailMeidaButton
+                        TextInLine='Đăng nhập với'
+                        />
                         <View style={styles.containerEmailBtn}>
                                         <MyButton 
                                         title="Sign in with Email"
