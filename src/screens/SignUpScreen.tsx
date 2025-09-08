@@ -10,6 +10,7 @@ import { loginUser } from '@/Redux/Slices/Auth/authThunk';
 import { logout } from '@/Redux/Slices/Auth/authSlice';
 
 const SignUpScreen = () => {
+    console.log("<<<<< Hung Log:", 'test')
     const dispatch = useAppDispatch();
     const authData = useAppSelector((state) => state.auth);
     return (
@@ -36,7 +37,10 @@ const SignUpScreen = () => {
                 PressableStyle={styles.btnRegister}
                 title='Đăng xuất'
                 PressableTxtStyle={styles.txtResiger}
-                onPress={() => dispatch(logout())}
+                //onPress={() => dispatch(logout())}
+                onPress={() => {
+                    console.log("<<<<< Hung Log:", "a");
+                }}
                 />
                 <SocailMeidaButton
                 TextInLine='Đăng ký với'
