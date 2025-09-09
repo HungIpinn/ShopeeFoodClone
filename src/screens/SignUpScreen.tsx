@@ -11,7 +11,7 @@ import { logout } from '@/Redux/Slices/Auth/authSlice';
 
 const SignUpScreen = () => {
     const dispatch = useAppDispatch();
-    const authData = useAppSelector((state) => state);
+    const authData = useAppSelector((state) => state.auth);
     console.log("<<<<< Hung Log:", authData);
     return (
         <SafeAreaView style={{flex:1}}>

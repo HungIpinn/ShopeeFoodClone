@@ -1,21 +1,16 @@
-// ReactotronConfig.ts
 import Reactotron from 'reactotron-react-native';
 import { reactotronRedux } from 'reactotron-redux';
 
-declare global {
-  interface Console {
-    tron: typeof Reactotron;
-  }
-}
+let reactotron = Reactotron;
 
 if (__DEV__) {
-  const reactotron = Reactotron.configure({
+  reactotron = Reactotron.configure({
     name: 'ShopeeFoodClone',
     host: 'localhost',
-  })
+  }) // Đổi host nếu chạy thiết bị thật
     .useReactNative()
     .use(reactotronRedux())
     .connect();
-
-  console.tron = reactotron;
 }
+
+export default reactotron as typeof Reactotron & { createEnhancer?: () => any };

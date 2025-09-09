@@ -5,7 +5,7 @@ import axios, {
 } from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com', // TODO: thay bằng API thật
+  baseURL: 'https://jsonplaceholder.typicode.com1', // TODO: thay bằng API thật
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

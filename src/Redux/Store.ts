@@ -1,21 +1,10 @@
-// store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from '@/Redux/Slices/Auth/authSlice';
-import { StoreEnhancer } from 'redux'; // Import type StoreEnhancer
+import Reactotron from '@/shared/config/ReactotronConfig';
 
-import Reactotron from 'reactotron-react-native';
-import { reactotronRedux } from 'reactotron-redux';
-
-// Khai báo một enhancer mặc định với kiểu StoreEnhancer
-let reactotronEnhancer: StoreEnhancer | undefined = undefined;
-
-// Tạo enhancer chỉ khi ở môi trường phát triển
-if (__DEV__) {
-  const tron = Reactotron.configure({ name: 'ShopeeFoodClone' })
-    .use(reactotronRedux())
-    .connect();
-
-  reactotronEnhancer = tron.createEnhancer!();
+let reactotronEnhancer = undefined;
+if (__DEV__ && Reactotron.createEnhancer) {
+  reactotronEnhancer = Reactotron.createEnhancer();
 }
 
 export const store = configureStore({
