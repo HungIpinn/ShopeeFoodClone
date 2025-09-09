@@ -1,7 +1,11 @@
-import axios from 'axios';
+import axios, {
+  AxiosError,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: 'https://api.shopeefood.fake/v1', // TODO: thay bằng API thật
+  baseURL: 'https://jsonplaceholder.typicode.com', // TODO: thay bằng API thật
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -9,22 +13,25 @@ const axiosClient = axios.create({
 });
 
 // Interceptor request
-axiosClient.interceptors.request.use(
-  async config => {
-    // nếu có token trong redux hoặc asyncstorage thì thêm vào header
-    // ví dụ: config.headers.Authorization = `Bearer ${token}`;
-    return config;
-  },
-  error => Promise.reject(error),
-);
+const setInterceptor = (instance: any) => {
+  instance.interceptors.request.use(
+    async (config: InternalAxiosRequestConfig) => {
+      // Nếu có token thì thêm vào
+      // config.headers.Authorization = `Bearer ${token}`;
+      return config;
+    },
+    (error: AxiosError) => Promise.reject(error),
+  );
 
-// Interceptor response
-axiosClient.interceptors.response.use(
-  response => response.data,
-  error => {
-    console.log('API Error:', error.response?.data || error.message);
-    return Promise.reject(error);
-  },
-);
+  instance.interceptors.response.use(
+    (response: AxiosResponse) => response,
+    (error: AxiosError) => {
+      console.log('API Error:', error.response?.data || error.message);
+      return Promise.reject(error);
+    },
+  );
+};
 
-export default axiosClient;
+setInterceptor(axiosClient);
+
+export { axiosClient };

@@ -1,16 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loginUser } from '@/Redux/Slices/Auth/authThunk';
+import { loginUser, TestJson } from '@/Redux/Slices/Auth/authThunk';
+import { TestResponse } from '@/types/testJson/testModel';
 
 interface AuthState {
   name: string | null;
   token: string | null;
   loading: boolean;
+  TestData: TestResponse | null;
 }
 
 const initialState: AuthState = {
   name: null,
   token: null,
   loading: false,
+  TestData: null,
 };
 
 const userSlice = createSlice({
@@ -24,6 +27,7 @@ const userSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      //login
       .addCase(loginUser.pending, state => {
         state.loading = true;
       })
@@ -33,6 +37,20 @@ const userSlice = createSlice({
         state.token = action.payload.token;
       })
       .addCase(loginUser.rejected, state => {
+        state.loading = false;
+      })
+      //testcase
+      .addCase(TestJson.pending, state => {
+        state.loading = true;
+      })
+      .addCase(
+        TestJson.fulfilled,
+        (state, action: PayloadAction<TestResponse>) => {
+          state.loading = false;
+          state.TestData = action.payload;
+        },
+      )
+      .addCase(TestJson.rejected, state => {
         state.loading = false;
       });
   },

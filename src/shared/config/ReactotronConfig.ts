@@ -1,5 +1,6 @@
 // ReactotronConfig.ts
 import Reactotron from 'reactotron-react-native';
+import { reactotronRedux } from 'reactotron-redux';
 
 declare global {
   interface Console {
@@ -13,6 +14,7 @@ if (__DEV__) {
     host: 'localhost',
   })
     .useReactNative()
+    .use(reactotronRedux())
     .connect();
 
   console.tron = reactotron;
