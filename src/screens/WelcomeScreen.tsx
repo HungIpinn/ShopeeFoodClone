@@ -39,13 +39,14 @@ const WelcomeScreen = () => {
                         />
                         <View style={styles.containerEmailBtn}>
                                         <MyButton 
+                                        onPress={(() => navigation.navigate('Otp'))}
                                         title="Sign in with Email"
                                         PressableStyle={styles.customPressableEmail}
                                         PressableTxtStyle={styles.customPressableEmailTxt}
                                         />
                                     </View>
                         <View style={styles.containerTextFooter}>
-                            <Text>Chưa có tài khoản?</Text>
+                            <Text>Chưa có tài khoản?1</Text>
                             <MyPressable
                                 onPress={(() => navigation.navigate('SignUp'))}
                                 title="Đăng ký"

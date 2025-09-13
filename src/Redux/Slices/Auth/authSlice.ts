@@ -7,6 +7,7 @@ interface AuthState {
   token: string | null;
   loading: boolean;
   TestData: TestResponse | null;
+  IsSuccess: boolean;
 }
 
 const initialState: AuthState = {
@@ -14,6 +15,7 @@ const initialState: AuthState = {
   token: null,
   loading: false,
   TestData: null,
+  IsSuccess: false,
 };
 
 const userSlice = createSlice({
@@ -38,6 +40,7 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.rejected, state => {
         state.loading = false;
+        state.IsSuccess = true;
       })
       //testcase
       .addCase(TestJson.pending, state => {

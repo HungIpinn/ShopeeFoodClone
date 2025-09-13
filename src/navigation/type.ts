@@ -26,6 +26,7 @@ export type RootStackParamList = {
   SignUp: undefined;
   Root: NavigatorScreenParams<DrawerParamList>;
   Detail: undefined;
+  Otp: undefined;
 };
 
 // Stack + Drawer

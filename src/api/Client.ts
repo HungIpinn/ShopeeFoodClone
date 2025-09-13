@@ -1,36 +1,75 @@
 import axios, {
   AxiosError,
+  AxiosInstance,
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com1', // TODO: thay bằng API thật
+  baseURL: 'https://jsonplaceholder.typicode.com', // TODO: thay bằng API thật
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Interceptor request
-const setInterceptor = (instance: any) => {
+const setInterceptor = (instance: AxiosInstance) => {
+  // ----------- REQUEST INTERCEPTOR -----------
   instance.interceptors.request.use(
     async (config: InternalAxiosRequestConfig) => {
-      // Nếu có token thì thêm vào
-      // config.headers.Authorization = `Bearer ${token}`;
-      return config;
-    },
-    (error: AxiosError) => Promise.reject(error),
-  );
+      try {
+        // 👇 Ví dụ: lấy token từ localStorage/AsyncStorage
+        // const token = await AsyncStorage.getItem('token');
 
-  instance.interceptors.response.use(
-    (response: AxiosResponse) => response,
+        // if (token) {
+        //   config.headers.Authorization = `Bearer ${token}`;
+        // }
+
+        // Có thể thêm headers khác nếu cần
+        //config.headers['X-Requested-With'] = 'XMLHttpRequest';
+
+        return config; // ⚡ phải return config
+      } catch (err) {
+        console.error('Request Interceptor Error:', err);
+        return Promise.reject(err);
+      }
+    },
     (error: AxiosError) => {
-      console.log('API Error:', error.response?.data || error.message);
+      console.error('Request Interceptor Failed:', error.message);
       return Promise.reject(error);
     },
   );
+
+  // ----------- RESPONSE INTERCEPTOR -----------
+  instance.interceptors.response.use(
+    (response: AxiosResponse) => {
+      // 👇 response thành công: có thể handle data chung
+      // Ví dụ: unwrap data
+      return response;
+    },
+    (error: AxiosError) => {
+      // 👇 xử lý lỗi API
+      if (error.response) {
+        console.error('API Error Response:', {
+          status: error.response.status,
+          data: error.response.data,
+        });
+
+        // Ví dụ: nếu 401 thì logout
+        if (error.response.status === 401) {
+          console.warn('Unauthorized! Redirect to login.');
+          // window.location.href = "/login"; // hoặc dispatch logout
+        }
+      } else {
+        console.error('API Error:', error.message);
+      }
+
+      return Promise.reject(error); // ⚡ phải return Promise.reject
+    },
+  );
 };
+
+export default setInterceptor;
 
 setInterceptor(axiosClient);
 

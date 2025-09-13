@@ -6,6 +6,7 @@ import DetailScreen from '@/screens/DetailScreen';
 import WelcomeScreen from '@/screens/WelcomeScreen';
 import SignUpScreen from '@/screens/SignUpScreen';
 import { RootStackParamList } from '@/navigation/type';
+import OtpScreen from '@/screens/OtpScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -19,6 +20,7 @@ const StackNavigator = () => (
       options={{ headerShown: false }} 
     />
     <Stack.Screen name="Detail" component={DetailScreen} />
+    <Stack.Screen name="Otp" component={OtpScreen} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
 
