@@ -56,8 +56,9 @@ const OnfilledSucces = (val:string) =>{
                 onFilled={(val) => OnfilledSucces(val)}
                 />
             </View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback>   
         </KeyboardAvoidingView>
+        <LoadingOverlay visible={authData.loading}/>
     </SafeAreaView>
   )
 }

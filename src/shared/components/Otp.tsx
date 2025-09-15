@@ -65,6 +65,7 @@ const OtpInput: React.FC<OtpInputProps> = ({
         .fill(0)
         .map((_, index) => (
           <TextInput
+            autoFocus={index == 0?true:false}
             key={index}
             ref={(ref) => {
               if (ref) inputsRef.current[index] = ref;

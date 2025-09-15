@@ -1,13 +1,17 @@
+import Header from "@/shared/components/Header";
 import { useNavigation } from "@react-navigation/native";
-import { Button, Text, View } from "react-native";
+import {  Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomeScreen = () => {
   const navigation: any = useNavigation();
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button title="Go to Detail" onPress={() => navigation.navigate('Detail',{userid:1})} />
-    </View>
+    <SafeAreaView style={{flex:1}}>
+      <View>
+        <Header/>
+        <Text>Home Screen</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 

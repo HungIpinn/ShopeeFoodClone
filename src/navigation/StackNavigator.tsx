@@ -7,16 +7,20 @@ import WelcomeScreen from '@/screens/WelcomeScreen';
 import SignUpScreen from '@/screens/SignUpScreen';
 import { RootStackParamList } from '@/navigation/type';
 import OtpScreen from '@/screens/OtpScreen';
+import TabNavigator from '@/navigation/TabNavigator';
+import HomeScreen from '@/screens/HomeScreens';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackNavigator = () => (
-  <Stack.Navigator>
+  <Stack.Navigator
+  initialRouteName="Root" 
+  >
     <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }}/>
     <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }}/>
     <Stack.Screen 
       name="Root" 
-      component={DrawerNavigator} 
+      component={TabNavigator} 
       options={{ headerShown: false }} 
     />
     <Stack.Screen name="Detail" component={DetailScreen} />
