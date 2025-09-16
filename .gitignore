@@ -73,3 +73,10 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Env files
+.env
+.env.*
+
+# React Native iOS build
+ios/build/

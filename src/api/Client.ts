@@ -4,9 +4,10 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
+import Config from 'react-native-config';
 
 const axiosClient = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com', // TODO: thay bằng API thật
+  baseURL: Config.API_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

@@ -6,7 +6,10 @@ import { TestResponse } from '@/types/testJson/testModel';
 export const getBanner = createAsyncThunk<BannerResponse[], BannerRequest>(
   'banner/get',
   async (data: BannerRequest) => {
-    const res = await axiosClient.post<BannerResponse[]>('/posts', data);
+    const res = await axiosClient.post<BannerResponse[]>(
+      '/api/Banner/GetBannerBySite',
+      data,
+    );
     return res.data;
   },
 );
