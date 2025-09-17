@@ -16,15 +16,13 @@ const bannerSlice = createSlice({
   name: 'banner',
   initialState,
   reducers: {},
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       //banner
-      .addCase(getBanner.pending, state => {
+      .addCase(getBanner.pending, (state) => {
         state.loading = true;
       })
       .addCase(getBanner.fulfilled, (state, action) => {
-        state.loading = false;
-
         // lấy id từ request (ví dụ request có field placeid)
         const reqId = action.meta.arg.placeid;
 
@@ -41,8 +39,9 @@ const bannerSlice = createSlice({
 
         // cập nhật lại state
         state.bannerData[reqId] = Array.from(map.values());
+        state.loading = false;
       })
-      .addCase(getBanner.rejected, state => {
+      .addCase(getBanner.rejected, (state) => {
         state.loading = false;
       });
   },
