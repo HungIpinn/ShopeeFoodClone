@@ -3,6 +3,8 @@ import authReducer from '@/Redux/Slices/Auth/authSlice';
 import Reactotron from '@/shared/config/ReactotronConfig';
 import bannerReducer from '@/Redux/Slices/Banner/bannerSlice';
 import menuReducer from '@/Redux/Slices/Menu/menuSlice';
+import fsInfoReducer from '@/Redux/Slices/FlashSaleInfo/flashSaleInfoSlice';
+import ldpReducer from '@/Redux/Slices/Product/productSlice';
 
 let reactotronEnhancer = undefined;
 if (__DEV__ && Reactotron.createEnhancer) {
@@ -14,6 +16,8 @@ export const store = configureStore({
     auth: authReducer,
     banner: bannerReducer,
     menu: menuReducer,
+    fsInfo: fsInfoReducer,
+    ldp: ldpReducer,
   },
   devTools: __DEV__,
   enhancers: (getDefaultEnhancers) => {

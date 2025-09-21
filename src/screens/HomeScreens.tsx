@@ -4,14 +4,15 @@ import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Banner from '@/shared/components/Banner';
 import LineLocation from '@/shared/components/LineLocation';
-import { useAppDispatch, useAppSelector } from '@/Redux/Hooks';
+import { useAppDispatch } from '@/Redux/Hooks';
 import { useEffect } from 'react';
 import { getMenu } from '@/Redux/Slices/Menu/menuThunk';
+import ListCateLv1 from '@/shared/components/ListCateLv1';
+import LineFlashSale from '@/shared/components/LineFlashSale';
 
 const HomeScreen = () => {
   const navigation: any = useNavigation();
   const dispatch = useAppDispatch();
-  const menuData = useAppSelector((state) => state.menu);
 
   useEffect(() => {
     dispatch(getMenu({ provinceId: 1027 }));
@@ -24,6 +25,8 @@ const HomeScreen = () => {
         <Header />
         <Banner cateId={0} positionId={8188} />
         <LineLocation />
+        <ListCateLv1 />
+        <LineFlashSale />
       </View>
     </SafeAreaView>
   );
