@@ -1,6 +1,6 @@
 import Header from '@/shared/components/Header';
 import { useNavigation } from '@react-navigation/native';
-import { Text, View } from 'react-native';
+import { Text, useColorScheme, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Banner from '@/shared/components/Banner';
 import LineLocation from '@/shared/components/LineLocation';
@@ -13,6 +13,7 @@ import LineFlashSale from '@/shared/components/LineFlashSale';
 const HomeScreen = () => {
   const navigation: any = useNavigation();
   const dispatch = useAppDispatch();
+  const colorScheme = useColorScheme();
 
   useEffect(() => {
     dispatch(getMenu({ provinceId: 1027 }));
@@ -27,6 +28,21 @@ const HomeScreen = () => {
         <LineLocation />
         <ListCateLv1 />
         <LineFlashSale />
+        {/* <View
+          className={
+            colorScheme === 'dark'
+              ? 'bg-background-dark'
+              : 'bg-background-light'
+          }
+        >
+          <Text
+            className={
+              colorScheme === 'dark' ? 'text-text-dark' : 'text-text-light'
+            }
+          >
+            Theme: {colorScheme}
+          </Text>
+        </View> */}
       </View>
     </SafeAreaView>
   );

@@ -2,12 +2,13 @@
   "extends": "@react-native/typescript-config",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "react-jsx", 
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["src/*"],
       "react-native-vector-icons/*": ["./declarations.d.ts"]
     },
     "noUnusedLocals": false,
+    "types": ["nativewind/types"]
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["**/node_modules", "**/Pods"]

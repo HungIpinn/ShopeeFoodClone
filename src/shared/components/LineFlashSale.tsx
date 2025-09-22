@@ -75,7 +75,9 @@ const LineFlashSale = () => {
         showsHorizontalScrollIndicator={false}
         horizontal
         data={productFSs?.product?.products ?? []}
-        renderItem={({ item }) => <ProductBox product={item} />}
+        renderItem={({ item }) => (
+          <ProductBox product={item} numberProductBox={3} />
+        )}
       />
     </View>
   );
